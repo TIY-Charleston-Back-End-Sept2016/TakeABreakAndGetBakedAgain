@@ -1,34 +1,37 @@
 const React = require('react')
-// const HomeView = require('./component-homeview')
+const STORE = require('./store.js')
+const ACTIONS = require('./actions.js')
 
-const DashboardView = React.createClass({
-   render: function(){
-      return (
-         <div>
-            <h1>Welcome to the dashboard</h1>
-         </div>
-      )
-   }
-})
-
-const AuthView = React.createClass({
-   render: function(){
-      return (
-         <div>
-            <h2>Sign In or Sign up!</h2>
-         </div>
-      )
-   }
-})
+const DashboardView = require('./component-dashboard.js')
+const AuthView = require('./component-auth.js')
+const NewTodoView = require('./component-newtodo.js')
+const MultiTodoView = require('./component-multitodo.js')
 
 const AppViewController = React.createClass({
   getInitialState: function(){
-    let startingState = {}
+    STORE.setStore('currentTodos', [])
+    let startingState = this.getStoreData()
     return startingState
   },
 
+ componentWillMount: function(){
+    let self = this
+    STORE.onChange(function(){
+        let updateState = STORE.getStoreData()
+        self.setState(updateState)
+    })
+ }
+
   render: function(){
     switch(this.props.routedFrom){
+      case "NewTodoView":
+         return <NewTodoView/>
+         break;
+
+      case "MultiTodoView":
+         return <MultiTodoView currentTodos={this.state.currentTodos} />
+         break;
+
       case "AuthView":
          return <AuthView/>
          break;

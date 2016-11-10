@@ -48,6 +48,7 @@
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
     "jquery": "2.2.4",
+    "margo-css": "^2.3.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   }

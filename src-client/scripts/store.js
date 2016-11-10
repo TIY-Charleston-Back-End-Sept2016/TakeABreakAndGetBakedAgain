@@ -4,7 +4,7 @@ const Backbone = require('backbone')
 const STORE = {
    _data:  {
        currentViewSetting : '',
-//        todosList : new SomeCollection(),
+       currentTodos : [],
     },
 
    setStore: function(storeProp, payload){
