@@ -1,0 +1,1 @@
+console.error("SyntaxError: /Users/travis-tiy/TIY-Instructor/demo-repos/TakeABreakAndGetBakedAgain/src-client/scripts/app.js: Unexpected token (10:20) while parsing file: /Users/travis-tiy/TIY-Instructor/demo-repos/TakeABreakAndGetBakedAgain/src-client/scripts/app.js");
