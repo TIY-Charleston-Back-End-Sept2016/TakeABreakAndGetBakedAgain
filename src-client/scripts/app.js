@@ -1,16 +1,26 @@
 const Backbone = require('backbone')
-// const AppViewController = require('backbone')
+const ReactDOM = require('react-dom')
+const React = require('react')
+
+const AppViewController = require('./component-viewcontroller.js')
 
 const AppRouter = Backbone.Router.extend({
   routes: {
-    "*" : "renderCatchAll"
+    "login" : 'renderAuthView',
+    "*dash" : "renderDashboard"
   },
 
-  renderCatchAll: function(){
-    ReactDOM.render(<h1>YOLO <small><br/>baby champu</small><h1/>, document.querySelector("#app-container"));
+  renderAuthView: function(){
+    ReactDOM.render(<AppViewController routedFrom="AuthView"/>, document.querySelector('#app-container'))
+
+  },
+
+  renderDashboard: function(){
+    ReactDOM.render(<AppViewController routedFrom="DashboardView"/>, document.querySelector('#app-container'))
   },
 
   initialize: function(){
+     Backbone.history.start();
   }
 })
 
